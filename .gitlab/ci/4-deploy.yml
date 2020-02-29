@@ -15,11 +15,11 @@ deploy_review:
     - tags
   environment:
     name: review/$CI_BUILD_REF_NAME
-    url: https://$CI_ENVIRONMENT_SLUG.dev.planetexpress.io
+    url: https://$CI_ENVIRONMENT_SLUG.planetexpress.io
   before_script:
     - apk add -u gettext
     - echo $CI_DEPLOY_USER
-    - echo "https://${CI_ENVIRONMENT_SLUG}.dev.planetexpress.io"
+    - echo "https://${CI_ENVIRONMENT_SLUG}.planetexpress.io"
     - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
   script:
     - kubectl version
