@@ -32,6 +32,7 @@ deploy_review:
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
     - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - sed -i "s~__CI_COMMIT_SHA__~${CI_COMMIT_SHA}~" deployment.yaml ingress.yaml service.yaml
+    - kubectl cluster-info
     - kubectl apply -f deployment.yaml
     - kubectl apply -f service.yaml
     - kubectl apply -f ingress.yaml
