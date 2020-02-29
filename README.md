@@ -16,18 +16,6 @@ yarn
 
 # Create your own .env file with given .env.sample
 
-# add your sample keys, generate the RSA keys in the packages/api folder
-openssl genrsa -out private.pem 2048
-openssl rsa -in private.pem -pubout > public.pem
-
-# start docker with postgres and hasura
-
-docker-compose up
-
-# Apply migrations
-# (Note) this step creates tables "users", "roles" and "user_roles" in the database
-yarn workspace @planetexpress/api db:migrate:latest
-
 # Then simply start your app
 yarn dev
 
