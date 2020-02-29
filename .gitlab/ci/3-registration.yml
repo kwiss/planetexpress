@@ -10,15 +10,24 @@
 #
 image_build:
   stage: "registration"
-  image:
-    name: docker:latest
-    entrypoint: ["/bin/sh", "-c"]
+  image: docker:19
+  services:
+    - docker:19-dind
+  interruptible: true    
   variables:
     DOCKER_HOST: tcp://localhost:2375
     IMAGE_NAME: $CI_REGISTRY_IMAGE/app
     CONTEXT: packages/app
-  services:
-    - docker:dind
+    - $E2E_TEST
+    - $PRODUCTION
+    - $RELEASE
+  dependencies:
+    - Build @planetexpress/app
+  needs:
+    - Install app
+    - Build @planetexpress/app        
+  before_script:
+    - cp yarn.lock packages/app/yarn.lock    
   script:
     - docker info
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
