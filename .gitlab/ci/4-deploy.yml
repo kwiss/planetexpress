@@ -9,10 +9,6 @@ deploy_review:
     name: lachlanevenson/k8s-kubectl:latest
     entrypoint: ["/bin/sh", "-c"]
   stage: "deploy"
-  only:
-    - branches
-  except:
-    - tags
   environment:
     name: review/$CI_BUILD_REF_NAME
     url: https://$CI_ENVIRONMENT_SLUG.planetexpress.io
