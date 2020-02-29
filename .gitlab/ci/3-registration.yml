@@ -9,7 +9,7 @@
 # these base jobs can be reused to build and publish your docker images
 #
 image_build:
-  stage: release
+  stage: "registration"
   image:
     name: docker:latest
     entrypoint: ["/bin/sh", "-c"]
