@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "next-k8s-mono-repo",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "description": "Mono repo exemple",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lerna run dev --parallel"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lerna": "3.20.2"
+  }
+}
