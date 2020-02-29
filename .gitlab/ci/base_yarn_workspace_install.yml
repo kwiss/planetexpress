@@ -1,5 +1,5 @@
 .base_yarn_workspace_install:
-  stage: "Prepare"
+  stage: "prepare"
   image: node:13-alpine
   interruptible: true
   script:
