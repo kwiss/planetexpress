@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: gameofblocks-__CI_ENVIRONMENT_SLUG__
-  namespace: gameofblocks-__CI_ENVIRONMENT_SLUG__
+  name: planetexpress-__CI_ENVIRONMENT_SLUG__
+  namespace: planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: gameofblocks
+    app: planetexpress
     ref: __CI_ENVIRONMENT_SLUG__
   annotations:
     prometheus.io/scrape: "true"
@@ -18,5 +18,5 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-    app: gameofblocks
+    app: planetexpress
     ref: __CI_ENVIRONMENT_SLUG__

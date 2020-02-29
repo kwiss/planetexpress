@@ -2,10 +2,10 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gameofblocks-__CI_ENVIRONMENT_SLUG__
-  namespace: gameofblocks-__CI_ENVIRONMENT_SLUG__
+  name: planetexpress-__CI_ENVIRONMENT_SLUG__
+  namespace: planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: gameofblocks
+    app: planetexpress
     ref: __CI_ENVIRONMENT_SLUG__
   annotations:
     kubernetes.io/tls-acme: "true"
@@ -13,15 +13,15 @@ metadata:
 spec:
   # tls:
   # - hosts:
-  #   - __CI_ENVIRONMENT_SLUG__.dev.gameofblocks.io
+  #   - __CI_ENVIRONMENT_SLUG__.dev.planetexpress.io
     # the secret used here is an unsigned wildcard cert for demo purposes
     # use your own or comment this out
     # secretName: tls-wildcard-demo
   rules:
-  - host: __CI_ENVIRONMENT_SLUG__.dev.gameofblocks.io
+  - host: __CI_ENVIRONMENT_SLUG__.dev.planetexpress.io
     http:
       paths:
       - path: /
         backend:
-          serviceName: gameofblocks-__CI_ENVIRONMENT_SLUG__
+          serviceName: planetexpress-__CI_ENVIRONMENT_SLUG__
           servicePort: 80
