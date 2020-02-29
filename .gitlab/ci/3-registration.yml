@@ -18,9 +18,6 @@ image_build:
     DOCKER_HOST: tcp://localhost:2375
     IMAGE_NAME: $CI_REGISTRY_IMAGE/app
     CONTEXT: packages/app
-    - $E2E_TEST
-    - $PRODUCTION
-    - $RELEASE
   dependencies:
     - Build @planetexpress/app
   needs:
