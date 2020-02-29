@@ -17,7 +17,7 @@ stages:
 
 include:
   - local: .gitlab/ci/base_register_stage.yml
-  - local: .gitlab/ci/base_yarn_workspace_install
+  - local: .gitlab/ci/base_yarn_workspace_install.yml
   - local: .gitlab/ci/1-prepare.yml
   - local: .gitlab/ci/2-build.yaml
   - local: .gitlab/ci/3-registration.yml
