@@ -2,6 +2,7 @@ include:
   - local: .gitlab/ci/base_register_stage.yml
   - local: .gitlab/ci/base_yarn_workspace_install.yml
   - local: .gitlab/ci/1-prepare.yml
+  - local: .gitlab/ci/2-build.yml
 
 variables:
   # CI variables
@@ -20,28 +21,6 @@ stages:
 - "Build Image"
 - "Registration"
 - "Deploy"
-
-################################################################################################
-###################################                    #########################################
-###################################     BUILD IMAGE    #########################################
-###################################                    #########################################
-################################################################################################
-
-Build @planetexpress/app:
-  stage: "Build Image"
-  variables:
-    INVALID_GIT_FILES_CHANGES: "true"
-  dependencies:
-    - Install app
-  needs:
-    - Install app
-  image: node:12-alpine
-  script:
-    - yarn workspace @planetexpress/app build
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - packages/app/.next
 
 ################################################################################################
 ###################################                    #########################################
