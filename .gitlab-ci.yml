@@ -1,6 +1,7 @@
 include:
   - local: .gitlab/ci/base_register_stage.yml
   - local: .gitlab/ci/base_yarn_workspace_install.yml
+  - local: .gitlab/ci/1-prepare.yml
 
 variables:
   # CI variables
@@ -19,37 +20,6 @@ stages:
 - "Build Image"
 - "Registration"
 - "Deploy"
-
-################################################################################################
-###################################               ##############################################
-###################################     PREPARE   ##############################################
-###################################               ##############################################
-################################################################################################
-
-
-# Install api:
-#   extends: .base_yarn_workspace_install
-#   variables:
-#     CONTEXT: api
-#   before_script:
-#     - find packages -maxdepth 1 -type d -not -name api -not -name knex | tail -n +2 | xargs rm -rf
-#   artifacts:
-#     expire_in: 1 day
-#     paths:
-#       - node_modules
-#       - packages/api/node_modules
-
-Install app:
-  extends: .base_yarn_workspace_install
-  variables:
-    CONTEXT: app
-  before_script:
-    - find packages -maxdepth 1 -type d -not -name app | tail -n +2 | xargs rm -rf
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - node_modules
-      - packages/app/node_modules
 
 ################################################################################################
 ###################################                    #########################################
