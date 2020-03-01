@@ -3,7 +3,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: planetexpress-__CI_ENVIRONMENT_SLUG__
-  namespace: planetexpress
+  namespace: gitlab-managed-apps
   labels:
     app: planetexpress
     ref: __CI_ENVIRONMENT_SLUG__
