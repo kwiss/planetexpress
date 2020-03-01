@@ -1,3 +1,7 @@
+.prepare_stage:
+  stage: "Prepare"
+  dependencies: []
+  
 .base_yarn_workspace_install:
   extends: .prepare_stage
   image: node:13-alpine
