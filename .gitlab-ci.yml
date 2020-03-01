@@ -4,7 +4,7 @@ include:
   - local: .gitlab/ci/1-prepare.yml
   - local: .gitlab/ci/2-build.yml
   - local: .gitlab/ci/3-registration.yml
-  - local: .gitlab/ci/2-deploy.yml
+  - local: .gitlab/ci/4-deploy.yml
 
 variables:
   # CI variables
