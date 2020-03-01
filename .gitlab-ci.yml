@@ -153,6 +153,11 @@ deploy_review:
     - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
   script:
     - kubectl version
+    - echo "----------"
+    - echo "----------"
+    - echo "https://${CI_ENVIRONMENT_SLUG}.planetexpress.io"
+    - echo "----------"
+    - echo "----------"
     - echo "${K8S_NAMESPACE}"
     - echo "${KUBECONFIG}"
     - echo "${KUBE_NAMESPACE}"
