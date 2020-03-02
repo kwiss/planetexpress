@@ -1,0 +1,46 @@
+################################################################################################
+###################################                    #########################################
+###################################     REGISTRATION   #########################################
+###################################                    #########################################
+################################################################################################
+
+#
+# docker image registration
+# these base jobs can be reused to build and publish your docker images
+#
+
+.base_docker_image_stage:
+  image: docker:19
+  services:
+    - docker:19-dind
+
+.base_stage:
+  except:
+    variables:
+      # Don't run when running e2e tests
+      - $E2E_TEST
+      # Don't run when deploying in production an existing image
+      - $PRODUCTION
+      # Don't run when tagging a commit
+      - $RELEASE
+
+.register_stage:
+  extends: .base_stage
+  stage: "Registration"
+  interruptible: true
+  dependencies: []
+
+Register app image:
+  extends:
+    - .base_register_stage
+    - .register_stage
+  dependencies:
+    - Build @planetexpress/app
+  needs:
+    - Install app
+    - Build @planetexpress/app
+  before_script:
+    - cp yarn.lock packages/app/yarn.lock
+  variables:
+    CONTEXT: packages/app
+    IMAGE_NAME: $CI_REGISTRY_IMAGE/app

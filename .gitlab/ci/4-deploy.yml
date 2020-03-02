@@ -1,0 +1,48 @@
+################################################################################################
+###################################                    #########################################
+###################################     DEPLOY APP     #########################################
+###################################                    #########################################
+################################################################################################
+
+deploy_review:
+  image:
+    name: lachlanevenson/k8s-kubectl:latest
+    entrypoint: ["/bin/sh", "-c"]
+  stage: "Deploy"
+  environment:
+    name: review/$CI_BUILD_REF_NAME
+    url: https://$CI_ENVIRONMENT_SLUG.planetexpress.dev
+  before_script:
+    - apk add -u gettext
+    - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
+  script:
+    - kubectl version
+    - echo "----------"
+    - echo "----------"
+    - echo "https://${CI_ENVIRONMENT_SLUG}.planetexpress.dev"
+    - echo "----------"
+    - echo "----------"
+    - echo "${K8S_NAMESPACE}"
+    - echo "${KUBECONFIG}"
+    - echo "${KUBE_NAMESPACE}"
+    - echo "${KUBE_TOKEN}"    
+    - echo $CI_BUILD_REF_NAME
+    - echo "$CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA"
+    - echo $CI_REGISTRY
+    - echo $CI_REGISTRY_IMAGE
+    - echo $CI_COMMIT_SHA
+    - cd .k8s/
+    - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
+    - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml
+    - sed -i "s~__CI_COMMIT_SHA__~${CI_COMMIT_SHA}~" deployment.yaml ingress.yaml service.yaml
+    - |
+      if kubectl apply -f deployment.yaml | grep -q unchanged; then
+          echo "=> Patching deployment to force image update."
+          kubectl patch -f deployment.yaml -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"ci-last-updated\":\"$(date +'%s')\"}}}}}"
+      else
+          echo "=> Deployment apply has changed the object, no need to force image update."
+      fi
+    - kubectl apply -f service.yaml || true
+    - kubectl apply -f ingress.yaml
+    - kubectl rollout status -f deployment.yaml
+    - kubectl get deploy,svc,ing,pod -l app="$(echo ${CI_PROJECT_NAME} | tr "." "-")",ref="${CI_ENVIRONMENT_SLUG}"
