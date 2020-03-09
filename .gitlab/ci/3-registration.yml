@@ -56,7 +56,7 @@ Register hasura image:
     IMAGE_NAME: $CI_REGISTRY_IMAGE/hasura
 
 # POSTGRES
-Register hasura image:
+Register pg image:
   extends:
     - .base_register_stage
     - .register_stage
