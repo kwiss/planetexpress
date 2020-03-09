@@ -35,12 +35,12 @@ spec:
         - name: http-metrics
           protocol: TCP
           containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 8080
-          initialDelaySeconds: 15
-          timeoutSeconds: 2
+        # livenessProbe:
+        #   httpGet:
+        #     path: /healthz
+        #     port: 8080
+        #   initialDelaySeconds: 15
+        #   timeoutSeconds: 2
         # readinessProbe:
         #   httpGet:
         #     path: /console/login
