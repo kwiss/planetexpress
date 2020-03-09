@@ -11,7 +11,7 @@ deploy_review_app:
   stage: "Deploy"
   environment:
     name: review/$CI_BUILD_REF_NAME-app
-    url: https://$CI_ENVIRONMENT_SLUG.planetexpress.dev
+    url: https://app-$CI_ENVIRONMENT_SLUG.planetexpress.dev
   before_script:
     - apk add -u gettext
     - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
