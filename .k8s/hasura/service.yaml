@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: planetexpress
+    app: planetexpress-hasura
     ref: __CI_ENVIRONMENT_SLUG__
   annotations:
     prometheus.io/scrape: "true"
@@ -17,5 +17,5 @@ spec:
     - port: 80
       targetPort: 8080
   selector:
-    app: planetexpress
+    app: planetexpress-hasura
     ref: __CI_ENVIRONMENT_SLUG__

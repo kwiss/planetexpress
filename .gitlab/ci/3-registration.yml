@@ -62,4 +62,4 @@ Register pg image:
     - .register_stage
   variables:
     CONTEXT: packages/postgres
-    IMAGE_NAME: $CI_REGISTRY_IMAGE/postgres    
+    IMAGE_NAME: $CI_REGISTRY_IMAGE/postgres
