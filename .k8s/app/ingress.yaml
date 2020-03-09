@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: planetexpress
+    app: planetexpress-app
     ref: __CI_ENVIRONMENT_SLUG__
   annotations:
     kubernetes.io/tls-acme: "true"
@@ -12,10 +12,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+    - app-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
     secretName: __CI_ENVIRONMENT_SLUG__.planetexpress.dev
   rules:
-  - host: __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+  - host: app-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
     http:
       paths:
       - path: /
