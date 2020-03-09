@@ -4,26 +4,26 @@ kind: Deployment
 metadata:
   name: hasura-planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: planetexpress-hasura
-    ref: __CI_ENVIRONMENT_SLUG__-hasura
+    app: hasura-planetexpress
+    ref: hasura-__CI_ENVIRONMENT_SLUG__
     track: stable
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: planetexpress-hasura
-      ref: __CI_ENVIRONMENT_SLUG__-hasura
+      app: hasura-planetexpress
+      ref: hasura-__CI_ENVIRONMENT_SLUG__
   template:
     metadata:
       labels:
-        app: planetexpress-hasura
-        ref: __CI_ENVIRONMENT_SLUG__-hasura
+        app: hasura-planetexpress
+        ref: hasura-__CI_ENVIRONMENT_SLUG__
         track: stable
     spec:
       imagePullSecrets:
         - name: regcred    
       containers:
-      - name: hasura
+      - name: hasura-planetexpress
         image: __CI_REGISTRY_IMAGE__/hasura:__CI_COMMIT_SHA__
         imagePullPolicy: Always
         ports:

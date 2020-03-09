@@ -4,8 +4,8 @@ kind: Service
 metadata:
   name: hasura-planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: planetexpress-hasura
-    ref: __CI_ENVIRONMENT_SLUG__-hasura
+    app: hasura-planetexpress
+    ref: hasura-__CI_ENVIRONMENT_SLUG__
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8000"

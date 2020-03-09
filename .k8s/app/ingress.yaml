@@ -4,8 +4,8 @@ kind: Ingress
 metadata:
   name: app-planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: planetexpress-app
-    ref: app-__CI_ENVIRONMENT_SLUG__-app
+    app: app-planetexpress
+    ref: app-__CI_ENVIRONMENT_SLUG__
   annotations:
     kubernetes.io/tls-acme: "true"
     kubernetes.io/ingress.class: "nginx"
