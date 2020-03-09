@@ -30,6 +30,7 @@
   interruptible: true
   dependencies: []
 
+# APP
 Register app image:
   extends:
     - .base_register_stage
@@ -45,6 +46,7 @@ Register app image:
     CONTEXT: packages/app
     IMAGE_NAME: $CI_REGISTRY_IMAGE/app
 
+# HASURA
 Register hasura image:
   extends:
     - .base_register_stage
