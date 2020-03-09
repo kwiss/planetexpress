@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: planetexpress-__CI_ENVIRONMENT_SLUG__
+  labels:
+    app: planetexpress
+    ref: __CI_ENVIRONMENT_SLUG__
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+    secretName: __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+  rules:
+  - host: __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: planetexpress-__CI_ENVIRONMENT_SLUG__
+          servicePort: 80

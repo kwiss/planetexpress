@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: planetexpress-__CI_ENVIRONMENT_SLUG__
+  labels:
+    app: planetexpress
+    ref: __CI_ENVIRONMENT_SLUG__
+    track: stable
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: planetexpress
+      ref: __CI_ENVIRONMENT_SLUG__
+  template:
+    metadata:
+      labels:
+        app: planetexpress
+        ref: __CI_ENVIRONMENT_SLUG__
+        track: stable
+    spec:
+      imagePullSecrets:
+        - name: regcred    
+      containers:
+      - name: hasura
+        image: __CI_REGISTRY_IMAGE__/hasura:__CI_COMMIT_SHA__
+        imagePullPolicy: Always
+        ports:
+        - name: http-metrics
+          protocol: TCP
+          containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          timeoutSeconds: 2
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          timeoutSeconds: 2
