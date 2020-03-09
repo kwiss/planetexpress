@@ -26,6 +26,11 @@ spec:
       - name: hasura
         image: __CI_REGISTRY_IMAGE__/hasura:__CI_COMMIT_SHA__
         imagePullPolicy: Always
+        env:
+        - name: HASURA_GRAPHQL_DATABASE_URL
+          value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb
+        - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+          value: "true"
         ports:
         - name: http-metrics
           protocol: TCP
