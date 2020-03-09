@@ -38,12 +38,12 @@ spec:
         livenessProbe:
           httpGet:
             path: /healthz
-            port: 80
+            port: 8080
           initialDelaySeconds: 3
           timeoutSeconds: 2
         readinessProbe:
           httpGet:
             path: /console/login
-            port: 80
+            port: 8080
           initialDelaySeconds: 3
           timeoutSeconds: 2

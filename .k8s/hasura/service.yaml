@@ -14,8 +14,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8080
-      targetPort: 80
+    - port: 80
+      targetPort: 8080
   selector:
     app: planetexpress-hasura
     ref: __CI_ENVIRONMENT_SLUG__
