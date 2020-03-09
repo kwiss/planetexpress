@@ -16,7 +16,11 @@ deploy_review_app:
     - apk add -u gettext
     - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
   script:
-    - echo $CI_ENVIRONMENT_SLUG
+    - echo "----------"
+    - echo "----------"
+    - echo "https://app-${CI_ENVIRONMENT_SLUG}.planetexpress.dev"
+    - echo "----------"
+    - echo "----------"
     - cd .k8s/app
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
     - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml
@@ -45,7 +49,11 @@ deploy_review_hasura:
     - apk add -u gettext
     - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
   script:
-    - echo $CI_ENVIRONMENT_SLUG
+    - echo "----------"
+    - echo "----------"
+    - echo "https://hasura-${CI_ENVIRONMENT_SLUG}.planetexpress.dev"
+    - echo "----------"
+    - echo "----------"
     - cd .k8s/hasura
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
     - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml

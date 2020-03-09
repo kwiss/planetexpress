@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-planetexpress-__CI_ENVIRONMENT_SLUG__
+  name: planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
-    app: app-planetexpress
-    ref: app-__CI_ENVIRONMENT_SLUG__
+    app: planetexpress
+    ref: __CI_ENVIRONMENT_SLUG__
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8000"
@@ -17,5 +17,5 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-    app: app-planetexpress
-    ref: app-__CI_ENVIRONMENT_SLUG__
+    app: planetexpress
+    ref: __CI_ENVIRONMENT_SLUG__
