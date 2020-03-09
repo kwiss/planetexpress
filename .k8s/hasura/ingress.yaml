@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: planetexpress-__CI_ENVIRONMENT_SLUG__
+  name: hasura-planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
     app: planetexpress
     ref: __CI_ENVIRONMENT_SLUG__
@@ -12,13 +12,13 @@ metadata:
 spec:
   tls:
   - hosts:
-    - __CI_ENVIRONMENT_SLUG__.planetexpress.dev
-    secretName: __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+    - hasura-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
+    secretName: hasura-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
   rules:
-  - host: __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+  - host: hasura-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
     http:
       paths:
       - path: /
         backend:
-          serviceName: planetexpress-__CI_ENVIRONMENT_SLUG__
+          serviceName: hasura-planetexpress-__CI_ENVIRONMENT_SLUG__
           servicePort: 80
