@@ -18,5 +18,5 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: hasura
+              serviceName: planetexpress-hasura
               servicePort: 80
