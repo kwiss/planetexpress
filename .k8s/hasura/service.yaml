@@ -2,10 +2,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: planetexpress-__CI_ENVIRONMENT_SLUG__
+  name: planetexpress-hasura
   labels:
     app: planetexpress-hasura
-    ref: __CI_ENVIRONMENT_SLUG__
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8000"
@@ -14,8 +13,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 8080
   selector:
     app: planetexpress-hasura
-    ref: __CI_ENVIRONMENT_SLUG__

@@ -2,48 +2,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: planetexpress-__CI_ENVIRONMENT_SLUG__
   labels:
     app: planetexpress-hasura
-    ref: __CI_ENVIRONMENT_SLUG__
-    track: stable
+    hasuraService: custom
+  name: planetexpress-hasura
+  namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: planetexpress-hasura
-      ref: __CI_ENVIRONMENT_SLUG__
   template:
     metadata:
+      creationTimestamp: null
       labels:
         app: planetexpress-hasura
-        ref: __CI_ENVIRONMENT_SLUG__
-        track: stable
     spec:
       imagePullSecrets:
         - name: regcred    
       containers:
       - name: hasura
         image: __CI_REGISTRY_IMAGE__/hasura:__CI_COMMIT_SHA__
-        imagePullPolicy: Always
+        imagePullPolicy: Always      
         env:
         - name: HASURA_GRAPHQL_DATABASE_URL
           value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb
+        - name: HASURA_GRAPHQL_ACCESS_KEY
+          value: secret
         - name: HASURA_GRAPHQL_ENABLE_CONSOLE
           value: "true"
         ports:
-        - name: http-metrics
-          protocol: TCP
-          containerPort: 8080
-        # livenessProbe:
-        #   httpGet:
-        #     path: /healthz
-        #     port: 8080
-        #   initialDelaySeconds: 15
-        #   timeoutSeconds: 2
-        # readinessProbe:
-        #   httpGet:
-        #     path: /console/login
-        #     port: 8080
-        #   initialDelaySeconds: 3
-        #   timeoutSeconds: 2
+          - containerPort: 8080
+            protocol: TCP        
