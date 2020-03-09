@@ -12,7 +12,7 @@ spec:
   tls:
   - hosts:
     - hasura-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
-    secretName: __CI_ENVIRONMENT_SLUG__.planetexpress.dev
+    secretName: hasura-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
   rules:
     - host: hasura-__CI_ENVIRONMENT_SLUG__.planetexpress.dev
       http:

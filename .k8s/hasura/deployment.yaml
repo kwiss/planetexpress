@@ -6,7 +6,6 @@ metadata:
     app: planetexpress-hasura
     hasuraService: custom
   name: planetexpress-hasura
-  namespace: default
 spec:
   replicas: 2
   selector:
@@ -33,4 +32,4 @@ spec:
           value: "true"
         ports:
           - containerPort: 8080
-            protocol: TCP        
+            protocol: TCP
