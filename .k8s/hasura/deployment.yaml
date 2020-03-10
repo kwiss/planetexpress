@@ -33,9 +33,3 @@ spec:
         ports:
           - containerPort: 8080
             protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 80
-          initialDelaySeconds: 15
-          timeoutSeconds: 2
