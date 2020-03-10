@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path:"../../.env"});
 const next = require("next");
 const express = require("express");
 
@@ -8,9 +8,9 @@ const passport = require("passport");
 const cors = require("cors");
 const expressValidator = require("express-validator");
 
-const port = parseInt(process.env.PORT, 10) || 3000;
+const port = parseInt(process.env.PORT, 10) || 80;
 const dev = process.env.NODE_ENV !== "production";
-
+console.log(process.env.PORT)
 const app = next({ dev });
 const handler = app.getRequestHandler();
 
