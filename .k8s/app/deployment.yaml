@@ -27,6 +27,12 @@ spec:
         image: __CI_REGISTRY_IMAGE__/app:__CI_COMMIT_SHA__
         imagePullPolicy: Always
         env:
+        - name: AUTH_PRIVATE_KEY
+          value: "test123456"
+        - name: AUTH_PUBLIC_KEY
+          value: "test123456"
+        - name: AUTH_KEY_ID
+          value: "test123456"                    
         - name: DATABASE_URL
           value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb
         ports:

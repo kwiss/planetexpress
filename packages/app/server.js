@@ -8,10 +8,8 @@ const passport = require("passport");
 const cors = require("cors");
 const expressValidator = require("express-validator");
 
-console.log(process.env)
 const port = parseInt(process.env.PORT, 10) || 80;
 const dev = process.env.NODE_ENV !== "production";
-console.log(process.env.PORT)
 const app = next({ dev });
 const handler = app.getRequestHandler();
 
