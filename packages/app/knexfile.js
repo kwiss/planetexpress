@@ -4,7 +4,9 @@ const pg = require('pg');
 const databaseName = "planetexpress_dev";
 
 // TODO add condition with regex for ssl in url
-pg.defaults.ssl = true;
+if(process.env.DATABASE_URL) {
+  pg.defaults.ssl = true;
+}
 
 const connectionUrl =
   process.env.DATABASE_URL ||
