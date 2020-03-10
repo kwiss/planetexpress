@@ -20,9 +20,9 @@ deploy_review_app:
     - echo "----------"
     - echo "https://app-${CI_ENVIRONMENT_SLUG}.planetexpress.dev"
     - echo "----------"
-    - echo CI_ENVIRONMENT_SLUG
-    - echo CI_COMMIT_SHA
-    - echo CI_PROJECT_NAME
+    - echo ${CI_ENVIRONMENT_SLUG}
+    - echo ${CI_COMMIT_SHA}
+    - echo ${CI_PROJECT_NAME}
     - echo "----------"
     - cd .k8s/app
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
@@ -51,16 +51,16 @@ deploy_review_hasura:
   before_script:
     - apk add -u gettext
     - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
-    - kubectl get secret hasura --namespace=default --export -o yaml
-    - kubectl apply -f hasura.yaml
+    - kubectl get secret hasura --namespace=default --export -o yaml |\
+   kubectl apply --namespace= -f -
   script:
     - echo "----------"
     - echo "----------"
     - echo "https://hasura-${CI_ENVIRONMENT_SLUG}.planetexpress.dev"
     - echo "----------"
-    - echo CI_ENVIRONMENT_SLUG
-    - echo CI_COMMIT_SHA
-    - echo CI_PROJECT_NAME
+    - echo ${CI_ENVIRONMENT_SLUG}
+    - echo ${CI_COMMIT_SHA}
+    - echo ${CI_PROJECT_NAME}
     - echo "----------"
     - cd .k8s/hasura
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
