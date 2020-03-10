@@ -51,8 +51,8 @@ deploy_review_hasura:
   before_script:
     - apk add -u gettext
     - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
-    - kubectl get secret hasura --namespace=default --export -o yaml |\
-   kubectl apply -f -
+    - kubectl get secret hasura --namespace=default --export -o yaml
+    - kubectl apply -f hasura.yaml
   script:
     - echo "----------"
     - echo "----------"
