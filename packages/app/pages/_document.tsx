@@ -23,7 +23,6 @@ export default class MyDocument extends Document {
             height: 100%;
           }
           `}</style>
-          {this.props.styleTags}
         </Head>
         <body>
           <Main />
