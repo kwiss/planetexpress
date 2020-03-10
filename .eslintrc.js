@@ -8,6 +8,7 @@ module.exports = {
   extends: ['airbnb', 'plugin:import/errors', 'plugin:import/warnings', 'prettier', 'prettier/react'],
   plugins: ['sort-keys-fix', 'simple-import-sort', 'prettier', 'import', 'jest', 'jsx-a11y', 'react', 'json', 'html'],
   rules: {
+    'no-console': error,
     'max-classes-per-file': ignore
     'simple-import-sort/sort': error,
     'sort-keys-fix/sort-keys-fix': [error, 'asc'],
