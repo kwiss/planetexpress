@@ -1,5 +1,7 @@
+require("dotenv").config();
 const databaseName = "planetexpress_dev";
 
+console.log("process.env.DATABASE_URL");
 console.log(process.env.DATABASE_URL);
 
 const connectionUrl =
