@@ -1,10 +1,9 @@
 require("dotenv").config();
 const pg = require('pg');
 
-
 const databaseName = "planetexpress_dev";
 
-console.log(process.env.DATABASE_URL)
+// TODO add condition with regex for ssl in url
 pg.defaults.ssl = true;
 
 const connectionUrl =

@@ -29,6 +29,8 @@ spec:
         env:
         - name: AUTH_PRIVATE_KEY
           value: "test123456"
+        - name: PORT
+          value: 80
         - name: AUTH_PUBLIC_KEY
           value: "test123456"
         - name: AUTH_KEY_ID

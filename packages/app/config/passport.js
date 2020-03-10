@@ -2,7 +2,6 @@ const passport = require("passport");
 const { Strategy: LocalStrategy } = require("passport-local");
 const { Strategy: BearerStrategy } = require("passport-http-bearer");
 const { User } = require("../db/schema");
-// const { errorHandler } = require("../db/errors");
 
 passport.use(
   new LocalStrategy(
