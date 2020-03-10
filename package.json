@@ -8,6 +8,8 @@
   "description": "Mono repo exemple",
   "main": "index.js",
   "scripts": {
+    "start": "lerna run start --parallel",
+    "build": "lerna run build",
     "dev": "lerna run dev --parallel"
   },
   "husky": {
