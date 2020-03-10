@@ -1,7 +1,11 @@
 require("dotenv").config();
+const pg = require('pg');
+
+
 const databaseName = "planetexpress_dev";
 
 console.log(process.env.DATABASE_URL)
+pg.defaults.ssl = true;
 
 const connectionUrl =
   process.env.DATABASE_URL ||
