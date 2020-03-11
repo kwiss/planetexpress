@@ -50,8 +50,8 @@ typings/
 # Optional npm cache directory
 .npm
 
-# Private keys
-*.pem
+# # Private keys
+# *.pem
 
 # Optional eslint cache
 .eslintcache

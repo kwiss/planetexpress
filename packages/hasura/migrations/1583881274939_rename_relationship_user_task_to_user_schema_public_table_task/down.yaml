@@ -1,0 +1,7 @@
+- args:
+    name: user
+    new_name: user_task
+    table:
+      name: task
+      schema: public
+  type: rename_relationship

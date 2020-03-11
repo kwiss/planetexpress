@@ -1,0 +1,10 @@
+- args:
+    cascade: false
+    read_only: false
+    sql: ALTER TABLE "public"."task" ALTER COLUMN "user_id" TYPE int4;
+  type: run_sql
+- args:
+    cascade: false
+    read_only: false
+    sql: ALTER TABLE "public"."task" ALTER COLUMN "user_id" DROP NOT NULL;
+  type: run_sql

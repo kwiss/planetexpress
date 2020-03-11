@@ -8,10 +8,42 @@
   "description": "Mono repo exemple",
   "main": "index.js",
   "scripts": {
+    "start": "lerna run start --parallel",
+    "build": "lerna run build",
     "dev": "lerna run dev --parallel"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 80
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "yarn lint:js --fix",
+        "git add"
+      ],
+      "*.html": [
+        "yarn lint:js --fix",
+        "git add"
+      ],
+      "package.json": [
+        "yarn lint:package",
+        "git add"
+      ]
+    }
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0"
+  },
   "dependencies": {
     "lerna": "3.20.2"
   }

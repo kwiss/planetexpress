@@ -18,18 +18,22 @@ spec:
         app: planetexpress-hasura
     spec:
       imagePullSecrets:
-        - name: regcred    
+        - name: regcred
       containers:
-      - name: hasura
-        image: __CI_REGISTRY_IMAGE__/hasura:__CI_COMMIT_SHA__
-        imagePullPolicy: Always      
-        env:
-        - name: HASURA_GRAPHQL_DATABASE_URL
-          value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb
-        - name: HASURA_GRAPHQL_ACCESS_KEY
-          value: secret
-        - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-          value: "true"
-        ports:
-          - containerPort: 8080
-            protocol: TCP
+        - name: hasura
+          image: __CI_REGISTRY_IMAGE__/hasura:__CI_COMMIT_SHA__
+          imagePullPolicy: Always
+          env:
+            - name: PGSSLMODE
+              value: 'require'
+            - name: HASURA_GRAPHQL_DATABASE_URL
+              value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+            - name: HASURA_GRAPHQL_JWT_SECRET
+              value: '{"type": "RS256","jwk_url": "https://app-__BASE_URL__.planetexpress.dev/api/auth/jwks"}'
+            - name: HASURA_GRAPHQL_ACCESS_KEY
+              value: secret
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: 'true'
+          ports:
+            - containerPort: 8080
+              protocol: TCP

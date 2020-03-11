@@ -21,24 +21,35 @@ spec:
         track: stable
     spec:
       imagePullSecrets:
-        - name: regcred    
+        - name: regcred
       containers:
-      - name: app
-        image: __CI_REGISTRY_IMAGE__/app:__CI_COMMIT_SHA__
-        imagePullPolicy: Always
-        ports:
-        - name: http-metrics
-          protocol: TCP
-          containerPort: 80
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 3
-          timeoutSeconds: 2
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 3
-          timeoutSeconds: 2
+        - name: app
+          image: __CI_REGISTRY_IMAGE__/app:__CI_COMMIT_SHA__
+          imagePullPolicy: Always
+          env:
+            - name: AUTH_PRIVATE_KEY
+              value: 'test123456'
+            - name: PORT
+              value: '80'
+            - name: AUTH_PUBLIC_KEY
+              value: 'test123456'
+            - name: AUTH_KEY_ID
+              value: 'test123456'
+            - name: DATABASE_URL
+              value: postgres://hasura:i3q8o4zrw88e8h0q@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+          ports:
+            - name: http-metrics
+              protocol: TCP
+              containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            timeoutSeconds: 2
