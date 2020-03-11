@@ -31,6 +31,8 @@ settings:
   react:
     version: detect
 rules: # See https://eslint.org/docs/rules
+  no-irregular-whitespace:
+    - 0
   semi:
     - error
     - always # Always put commas, to avoid multilines git diff when new lines are added

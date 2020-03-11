@@ -12,19 +12,12 @@ export default class MyDocument extends Document {
           />
           <meta name="description" content="" />
           <meta name="author" content="" />
-          <style>{`
-          html {
-            font-size: 14px;
-          }
-          html,
-          body,
-          div#__next {
-            background:white;
-            height: 100%;
-          }
-          `}</style>
+          <link
+            href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
-        <body>
+        <body>    
           <Main />
           <NextScript />
         </body>

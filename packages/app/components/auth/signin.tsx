@@ -2,12 +2,14 @@ import { Formik } from 'formik';
 import fetch from 'isomorphic-unfetch';
 import Router from 'next/router';
 import * as React from 'react';
-import { Box, Button, Input, Label } from 'theme-ui';
+import { Box, Input, Label } from 'theme-ui';
 
-import { login } from '../util/auth';
+import {CyButton} from '../../ui/Button';
+import { login } from '../../util/auth';
 
 const url = `/api/auth/login`;
 
+// Refactor with hook & split form in separate folder
 const Signin: React.FunctionComponent = () => {
   return (
     <Formik
@@ -50,6 +52,7 @@ const Signin: React.FunctionComponent = () => {
             <Input
               id="email"
               type="text"
+              autocomplete="nope"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -64,9 +67,9 @@ const Signin: React.FunctionComponent = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Button mt={30} type="submit">
+            <CyButton mt={30} type="submit">
               Se connecter
-            </Button>
+            </CyButton>
           </Box>
         );
       }}

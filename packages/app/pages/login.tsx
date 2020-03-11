@@ -1,14 +1,31 @@
+import Head from 'next/head';
 import * as React from 'react';
-import { Box } from 'theme-ui';
+import { Flex } from 'theme-ui';
 
-import Signin from '../components/signin';
+import Signin from '../components/auth/signin';
+import {LayoutDefault} from '../components/layouts';
 import { withAuthSync } from '../hocs/with-auth-sync';
+import {AuthBox} from '../ui/AuthBox';
 
 const Login: React.FunctionComponent = () => {
   return (
-    <Box mx="auto" width={300}>
-      <Signin />
-    </Box>
+    <>
+      <Head>
+        <title>Login</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <LayoutDefault>
+        <Flex sx={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh'
+        }}>
+          <AuthBox sx={{mx:' auto', width:'450px'}} title='Login'>
+            <Signin />
+          </AuthBox>
+        </Flex>
+      </LayoutDefault>
+    </>
   );
 };
 

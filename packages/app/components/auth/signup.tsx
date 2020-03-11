@@ -1,9 +1,12 @@
 import { Formik } from 'formik';
 import * as React from 'react';
-import { Box, Button, Input, Label } from 'theme-ui';
+import { Box, Input, Label } from 'theme-ui';
+
+import {CyButton} from '../../ui/Button';
 
 const url = `/api/auth/signup`;
 
+// Refactor with hook & split form in separate folder
 const Signup: React.FunctionComponent = () => {
   return (
     <Formik
@@ -29,7 +32,7 @@ const Signup: React.FunctionComponent = () => {
       {({ values, handleChange, handleBlur, handleSubmit }) => {
         return (
           <Box as="form" onSubmit={handleSubmit} py={3}>
-            <Label htmlFor="email">email</Label>
+            <Label htmlFor="email">Your email</Label>
             <Input
               id="email"
               type="text"
@@ -37,7 +40,7 @@ const Signup: React.FunctionComponent = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Label htmlFor="email">Username</Label>
+            <Label htmlFor="email">Your username</Label>
             <Input
               id="username"
               type="text"
@@ -45,8 +48,8 @@ const Signup: React.FunctionComponent = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Label mt={20} htmlFor="password">
-              Password
+            <Label htmlFor="password">
+              Your password
             </Label>
             <Input
               id="password"
@@ -55,9 +58,9 @@ const Signup: React.FunctionComponent = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Button mt={30} type="submit">
+            <CyButton type="submit">
               Créer un compte
-            </Button>
+            </CyButton>
           </Box>
         );
       }}
