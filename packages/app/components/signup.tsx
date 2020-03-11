@@ -2,10 +2,7 @@ import { Formik } from 'formik';
 import * as React from 'react';
 import { Box, Button, Input, Label } from 'theme-ui';
 
-import { login } from '../util/auth';
-
-// TODO
-const url = `http://localhost:3000/api/auth/signup`;
+const url = `/api/auth/signup`;
 
 const Signup: React.FunctionComponent = () => {
   return (

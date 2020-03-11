@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   publicRuntimeConfig: {
+    NODE_ENV: process.env.NODE_ENV,
     DATABASE_URL: process.env.DATABASE_URL,
     AUTH_KEY_ID: process.env.AUTH_KEY_ID,
     AUTH_PRIVATE_KEY: process.env.AUTH_PRIVATE_KEY,

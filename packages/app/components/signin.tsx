@@ -1,11 +1,12 @@
 import { Formik } from 'formik';
 import fetch from 'isomorphic-unfetch';
+import Router from 'next/router';
 import * as React from 'react';
 import { Box, Button, Input, Label } from 'theme-ui';
 
 import { login } from '../util/auth';
 
-const url = `http://localhost:3000/api/auth/login`;
+const url = `/api/auth/login`;
 
 const Signin: React.FunctionComponent = () => {
   return (
@@ -27,6 +28,7 @@ const Signin: React.FunctionComponent = () => {
           const { token } = await response.json();
           if (token) {
             login(token);
+            Router.push('/app');
           }
         }
       }}
