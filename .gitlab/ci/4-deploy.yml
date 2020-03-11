@@ -7,14 +7,14 @@
 deploy_review_app:
   image:
     name: lachlanevenson/k8s-kubectl:latest
-    entrypoint: ["/bin/sh", "-c"]
-  stage: "Deploy"
+    entrypoint: ['/bin/sh', '-c']
+  stage: 'Deploy'
   environment:
     name: review/$CI_BUILD_REF_NAME-app
     url: https://app-$CI_ENVIRONMENT_SLUG.planetexpress.dev
   before_script:
     - apk add -u gettext
-    - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -    
+    - kubectl create secret docker-registry regcred --docker-server=$CI_REGISTRY --docker-username="$CI_DEPLOY_USER" --docker-password="$CI_DEPLOY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL" --dry-run=true -o yaml | kubectl apply -f -
   script:
     - echo "----------"
     - echo "----------"
@@ -23,6 +23,8 @@ deploy_review_app:
     - echo ${CI_ENVIRONMENT_SLUG}
     - echo ${CI_COMMIT_SHA}
     - echo ${CI_PROJECT_NAME}
+    - echo ${CI_COMMIT_BRANCH}
+    - echo "${CI_COMMIT_BRANCH}" | tr / _
     - echo "----------"
     - cd .k8s/app
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
@@ -43,8 +45,8 @@ deploy_review_app:
 deploy_review_hasura:
   image:
     name: lachlanevenson/k8s-kubectl:latest
-    entrypoint: ["/bin/sh", "-c"]
-  stage: "Deploy"
+    entrypoint: ['/bin/sh', '-c']
+  stage: 'Deploy'
   environment:
     name: review/$CI_BUILD_REF_NAME-hasura
     url: https://hasura-$CI_ENVIRONMENT_SLUG.planetexpress.dev
@@ -58,7 +60,9 @@ deploy_review_hasura:
     - echo "----------"
     - echo ${CI_ENVIRONMENT_SLUG}
     - echo ${CI_COMMIT_SHA}
+    - echo ${CI_COMMIT_BRANCH}
     - echo ${CI_PROJECT_NAME}
+    - echo "${CI_COMMIT_BRANCH}" | tr / _
     - echo "----------"
     - cd .k8s/hasura
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
