@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Box } from 'theme-ui';
 
 import Signin from '../components/signin';
+import { withAuthSync } from '../hocs/with-auth-sync';
 
 const Login: React.FunctionComponent = () => {
   return (
@@ -11,4 +12,4 @@ const Login: React.FunctionComponent = () => {
   );
 };
 
-export default Login;
+export default withAuthSync(Login);

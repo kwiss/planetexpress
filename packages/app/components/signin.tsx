@@ -24,9 +24,9 @@ const Signin: React.FunctionComponent = () => {
         });
 
         if (response.ok) {
-          const { user } = await response.json();
-          if (user && user.token) {
-            login(user.token);
+          const { token } = await response.json();
+          if (token) {
+            login(token);
           }
         }
       }}
