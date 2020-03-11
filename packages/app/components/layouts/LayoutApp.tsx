@@ -1,16 +1,17 @@
-import React, {FunctionComponent} from 'react';
-import {Box, Flex} from 'theme-ui';
+import React, { FunctionComponent } from 'react';
+import { Box, Flex } from 'theme-ui';
 
-import {CySidebar} from '../../ui/Sidebar';
-import {Logout} from '../logout';
+import { CySidebar } from '../../ui/Sidebar';
+import { Logout } from '../logout';
 
-const LayoutApp: FunctionComponent = (props) => {
-  const {children} = props;
+const LayoutApp: FunctionComponent = props => {
+  const { children } = props;
   return (
     <Flex
       sx={{
-        flexWrap: 'wrap'
-      }}>
+        flexWrap: 'wrap',
+      }}
+    >
       <CySidebar>
         <Logout />
       </CySidebar>
@@ -19,11 +20,12 @@ const LayoutApp: FunctionComponent = (props) => {
           flexBasis: 0,
           flexGrow: 99999,
           minWidth: 320,
-          p: 3
-        }}>
+          p: 3,
+        }}
+      >
         {children}
       </Box>
-    </Flex> 
+    </Flex>
   );
 };
 

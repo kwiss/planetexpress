@@ -4,12 +4,12 @@ import React, { FunctionComponent } from 'react';
 import { CreateTodoForm } from './CreateTodoForm';
 import { CREATE_TODO } from './mutations';
 
- interface CreateTodoIdentifier {
+interface CreateTodoIdentifier {
   onSubmit?: Function;
 }
 
-const CreateTodo: FunctionComponent<CreateTodoIdentifier> = (props) => {
-  const {onSubmit} = props;
+const CreateTodo: FunctionComponent<CreateTodoIdentifier> = props => {
+  const { onSubmit } = props;
   const [createTodo] = useMutation(CREATE_TODO);
 
   const handleSubmit = (values, { setSubmitting, setErrors }): void => {
@@ -23,7 +23,7 @@ const CreateTodo: FunctionComponent<CreateTodoIdentifier> = (props) => {
         },
       });
       // execute onSubmit function if exist
-      if (typeof onSubmit === 'function') { 
+      if (typeof onSubmit === 'function') {
         onSubmit();
       }
     } catch (e) {

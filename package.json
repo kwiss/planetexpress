@@ -12,11 +12,6 @@
     "build": "lerna run build",
     "dev": "lerna run dev --parallel"
   },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "printWidth": 80
-  },
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint-staged"

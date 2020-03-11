@@ -4,17 +4,10 @@ import { Box, Input, Label, Select, Text, Textarea } from 'theme-ui';
 
 import { CyButton } from '../../ui/Button';
 import { todoSchema } from './schema';
-import { CreateTodoIdentifier } from './type';
+import { EditTodoIdentifier } from './type';
 
-const initialValues = {
-  assignee: '',
-  description: '',
-  status: 'todo',
-  title: '',
-};
-
-const CreateTodoForm: FunctionComponent<CreateTodoIdentifier> = props => {
-  const { handleSubmit } = props;
+const EditTodoForm: FunctionComponent<EditTodoIdentifier> = props => {
+  const { handleSubmit, initialValues } = props;
 
   const formik = useFormik({
     initialValues,
@@ -38,20 +31,15 @@ const CreateTodoForm: FunctionComponent<CreateTodoIdentifier> = props => {
         onChange={formik.handleChange}
         value={formik.values.description}
       />
-      <Label htmlFor="comment">Comment</Label>
-      {formik.touched.assignee && <Text>{formik.errors.assignee}</Text>}
-      <Select
-        mb="4"
-        name="assignee"
-        onChange={formik.handleChange}
-        value={formik.values.assignee}
-      >
+      <Label htmlFor="status">Assignee</Label>
+      {formik.touched.userId && <Text>{formik.errors.userId}</Text>}
+      <Select mb="4" name="userId" onChange={formik.handleChange} value={1}>
         <option>Beep</option>
         <option>Boop</option>
         <option>Blip</option>
       </Select>
-      <Label htmlFor="comment">Status</Label>
-      {formik.touched.status && <Text>{formik.errors.assignee}</Text>}
+      <Label htmlFor="status">Status</Label>
+      {formik.touched.status && <Text>{formik.errors.userId}</Text>}
       <Select
         mb="4"
         name="status"
@@ -69,4 +57,4 @@ const CreateTodoForm: FunctionComponent<CreateTodoIdentifier> = props => {
   );
 };
 
-export { CreateTodoForm };
+export { EditTodoForm };

@@ -4,13 +4,25 @@ import { Box, Flex } from 'theme-ui';
 
 import { CyIconButton } from '../../ui/IconButton';
 import { PanelContext } from '../../ui/panel/context';
-import {CreateTodo } from '../createTodo';
+import { CreateTodo } from '../createTodo';
 
 const ToolBar: FunctionComponent = () => {
   const {
     panel: { isOpen },
     togglePanel,
   } = useContext(PanelContext);
+
+  // TODO check that it doesn't leak
+  const CreateTodoComponent: FunctionComponent = () => {
+    return (
+      <CreateTodo
+        onSubmit={(): void => {
+          togglePanel({ Component: null, isOpen: false });
+        }}
+      />
+    );
+  };
+
   return (
     // TODO split style in separate ToolboxContainer and boardDescription components
     <Flex
@@ -21,7 +33,10 @@ const ToolBar: FunctionComponent = () => {
       </Box>
       <CyIconButton
         onClick={(e): void => {
-          togglePanel({ Component:  () => <CreateTodo onSubmit={(): void => {togglePanel({Component: null, isOpen: false});}}/>, isOpen: !isOpen});
+          togglePanel({
+            Component: CreateTodoComponent,
+            isOpen: !isOpen,
+          });
         }}
         Icon={IoMdAdd}
       >

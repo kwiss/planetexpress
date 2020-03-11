@@ -5,11 +5,14 @@ export const Context = createContext<any>({
   isOpen: false,
 });
 
-export const Provider: FunctionComponent = (props) => {
+export const Provider: FunctionComponent = props => {
   const { children } = props;
 
   // Use State to keep the values
-  const [panel, togglePanel] = useState({ Component: null, isOpen: false });
+  const [panel, togglePanel] = useState({
+    Component: null,
+    isOpen: false,
+  });
 
   // Make the context object:
   const PanelContext = {

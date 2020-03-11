@@ -1,4 +1,4 @@
-import {LayoutApp} from './LayoutApp';
-import {LayoutDefault} from './LayoutDefault';
+import { LayoutApp } from './LayoutApp';
+import { LayoutDefault } from './LayoutDefault';
 
-export {LayoutApp, LayoutDefault};
+export { LayoutApp, LayoutDefault };

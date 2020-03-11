@@ -1,3 +1,3 @@
-import {CreateTodo} from './CreateTodo';
+import { CreateTodo } from './CreateTodo';
 
-export {CreateTodo};
+export { CreateTodo };

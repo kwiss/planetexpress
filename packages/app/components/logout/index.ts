@@ -1,3 +1,3 @@
-import {Logout} from './Logout';
+import { Logout } from './Logout';
 
-export {Logout};
+export { Logout };

@@ -19,9 +19,9 @@ const App: React.FunctionComponent = () => {
       <Box sx={{ maxWidth: '1024px', mx: 'auto' }}>
         <PanelContextProvider>
           <ToolBar />
+          <TodoList />
           <Panel />
         </PanelContextProvider>
-        <TodoList />
       </Box>
     </LayoutApp>
   );
