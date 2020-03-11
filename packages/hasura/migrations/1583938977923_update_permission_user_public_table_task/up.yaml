@@ -1,0 +1,17 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - id
+      - title
+      - description
+      - status
+      - user_id
+      computed_fields: []
+      filter: {}
+      limit: null
+    role: user
+    table:
+      name: task
+      schema: public
+  type: create_select_permission

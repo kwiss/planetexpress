@@ -8,6 +8,7 @@ module.exports = {
     AUTH_KEY_ID: process.env.AUTH_KEY_ID,
     AUTH_PRIVATE_KEY: process.env.AUTH_PRIVATE_KEY,
     AUTH_PUBLIC_KEY: process.env.AUTH_PUBLIC_KEY,
+    GRAPHQL_SERVER_URI: process.env.GRAPHQL_SERVER_URI || "http://localhost:5000/v1/graphql",
   },
   webpack: (config) => {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env));
