@@ -1,21 +1,19 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import {Box, Flex} from 'theme-ui';
 
-const LayoutApp: React.FunctionComponent = (props) => {
+import {CySidebar} from '../../ui/Sidebar';
+import {Logout} from '../logout';
+
+const LayoutApp: FunctionComponent = (props) => {
   const {children} = props;
   return (
     <Flex
       sx={{
         flexWrap: 'wrap'
       }}>
-      <Box
-        sx={{
-          flexBasis: 256,
-          flexGrow: 1,
-          p: 3
-        }}>
-    Sidebar
-      </Box>
+      <CySidebar>
+        <Logout />
+      </CySidebar>
       <Box
         sx={{
           flexBasis: 0,
