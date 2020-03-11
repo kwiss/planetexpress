@@ -8,4 +8,5 @@ interface Todo {
 
 export interface TodoItemIdentifier {
   todo?: Todo;
+  edit?: Function;
 }

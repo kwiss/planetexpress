@@ -2,9 +2,9 @@ import React from 'react';
 import { Button } from 'theme-ui';
 
 const CyButton = (props) => {
-  const { children, sx, type } = props;
+  const { children, sx, type, variant } = props;
   return (
-    <Button type={type} sx={{ px: '5', py: '4', ...sx }}>
+    <Button type={type} variant={variant} sx={{...sx }}>
       {children}
     </Button>
   );

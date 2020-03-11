@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import { Avatar, Box, Flex, Text } from 'theme-ui';
+import { Avatar, Badge, Box, Flex, Text } from 'theme-ui';
 
+import {CyButton} from '../Button';
 import { TodoItemIdentifier } from './type';
 
 const todoItemStyle = {
@@ -16,7 +17,11 @@ const todoItemStyle = {
 
 const TodoItem: FunctionComponent<TodoItemIdentifier> = (props) => {
   const {
-    todo: { description, id, status, title, userId },
+    edit,
+    todo: {
+      description, id, status, title, 
+      userId 
+    },
   } = props;
   return (
     <Flex sx={todoItemStyle}>
@@ -26,6 +31,10 @@ const TodoItem: FunctionComponent<TodoItemIdentifier> = (props) => {
       />
       <Box sx={{ bg: 'greyBorder', height: '16px', mx: '3', width: '1px' }} />
       <Text>{title}</Text>
+      <CyButton variant={'small'} onClick={() => edit()}>
+        Editer
+      </CyButton>
+      <Badge sx={{ml: 'auto'}}>{status}</Badge>
     </Flex>
   );
 };

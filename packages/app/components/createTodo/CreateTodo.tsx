@@ -4,9 +4,15 @@ import React, { FunctionComponent } from 'react';
 import { CreateTodoForm } from './CreateTodoForm';
 import { CREATE_TODO } from './mutations';
 
-const CreateTodo: FunctionComponent = () => {
+ interface CreateTodoIdentifier {
+  onSubmit?: Function;
+}
+
+const CreateTodo: FunctionComponent<CreateTodoIdentifier> = (props) => {
+  const {onSubmit} = props;
   const [createTodo] = useMutation(CREATE_TODO);
-  const handleSubmit = (values, { setSubmitting, setErrors }) => {
+
+  const handleSubmit = (values, { setSubmitting, setErrors }): void => {
     try {
       createTodo({
         refetchQueries: ['todos'],
@@ -16,6 +22,10 @@ const CreateTodo: FunctionComponent = () => {
           title: values.title,
         },
       });
+      // execute onSubmit function if exist
+      if (typeof onSubmit === 'function') { 
+        onSubmit();
+      }
     } catch (e) {
       throw new Error(e);
     }
@@ -23,5 +33,7 @@ const CreateTodo: FunctionComponent = () => {
   };
   return <CreateTodoForm handleSubmit={handleSubmit} />;
 };
+
+CreateTodo.displayName = 'CreateTodo';
 
 export { CreateTodo };

@@ -1,16 +1,19 @@
 import React, { createContext, FunctionComponent, useState } from 'react';
 
-export const Context = createContext({});
+export const Context = createContext<any>({
+  Component: null,
+  isOpen: false,
+});
 
 export const Provider: FunctionComponent = (props) => {
   const { children } = props;
 
   // Use State to keep the values
-  const [isOpen, togglePanel] = useState(false);
+  const [panel, togglePanel] = useState({ Component: null, isOpen: false });
 
   // Make the context object:
   const PanelContext = {
-    isOpen,
+    panel,
     togglePanel,
   };
 

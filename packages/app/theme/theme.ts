@@ -14,28 +14,41 @@ const baseformStyle = {
   '&:hover': {
     bg: 'greyBorder',
   },
-  bg: 'greyHyperLight',
-  border: 0,
-  color: 'greyDark',
-  lineHeight: '22px',
-  px: 4,
-  py: 3,
-  transition: '150ms ease-in-out all',
+  'bg': 'greyHyperLight',
+  'border': 0,
+  'color': 'greyDark',
+  'lineHeight': '22px',
+  'px': 4,
+  'py': 3,
+  'transition': '150ms ease-in-out all',
 };
 
 const gradient = `linear-gradient(180deg, #2E48ED 0%, #2740E1 100%)`;
 
+const baseButtonStyle = {
+  '&:hover': {
+    boxShadow: '0px 4px 10px rgba(15, 41, 208, 0.25)',
+    cursor: 'pointer',
+  },
+  'background': gradient,
+  'boxShadow': '0px 1px 2px rgba(15, 41, 208, 0.25)',
+  'color': 'white',
+  'transition': '150ms ease-in-out all', 
+};
+
 export const base = {
   buttons: {
+    ...baseButtonStyle,
     primary: {
-      '&:hover': {
-        boxShadow: '0px 4px 10px rgba(15, 41, 208, 0.25)',
-        cursor: 'pointer',
-      },
-      background: gradient,
-      boxShadow: '0px 1px 2px rgba(15, 41, 208, 0.25)',
-      color: 'white',
-      transition: '150ms ease-in-out all',
+      ...baseButtonStyle,
+      px: '5',
+      py: '4',
+    },
+    small: {
+      ...baseButtonStyle,
+      fontSize: 1,
+      px: '2',
+      py: '1',
     },
   },
   colors: {

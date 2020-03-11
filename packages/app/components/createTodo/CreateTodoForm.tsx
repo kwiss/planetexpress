@@ -1,4 +1,4 @@
-import { FormikProps, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { Box, Input, Label, Select, Text, Textarea } from 'theme-ui';
 
@@ -62,7 +62,7 @@ const CreateTodoForm: FunctionComponent<CreateTodoIdentifier> = (props) => {
         <option>doing</option>
         <option>done</option>
       </Select>
-      <CyButton type="submit">Submit</CyButton>
+      <CyButton variant={'primary'} type="submit">Submit</CyButton>
     </Box>
   );
 };
