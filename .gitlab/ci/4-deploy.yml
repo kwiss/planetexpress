@@ -22,15 +22,14 @@ deploy_review_app:
     - echo "----------"
     - echo ${CI_ENVIRONMENT_SLUG}
     - echo ${CI_COMMIT_SHA}
+    - echo ${CI_COMMIT_REF_SLUG}
     - echo ${CI_PROJECT_NAME}
-    - echo ${CI_COMMIT_BRANCH}
-    - echo "${CI_COMMIT_BRANCH}" | tr / _
     - echo "----------"
     - cd .k8s/app
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
     - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - sed -i "s~__CI_COMMIT_SHA__~${CI_COMMIT_SHA}~" deployment.yaml ingress.yaml service.yaml
-    - sed -i "s~__BASE_URL__~"${CI_COMMIT_BRANCH}" | tr / _~" deployment.yaml ingress.yaml service.yaml
+    - sed -i "s~__BASEURL__~${CI_COMMIT_REF_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - |
       if kubectl apply -f deployment.yaml | grep -q unchanged; then
           echo "=> Patching deployment to force image update."
@@ -61,15 +60,14 @@ deploy_review_hasura:
     - echo "----------"
     - echo ${CI_ENVIRONMENT_SLUG}
     - echo ${CI_COMMIT_SHA}
-    - echo ${CI_COMMIT_BRANCH}
+    - echo ${CI_COMMIT_REF_SLUG}
     - echo ${CI_PROJECT_NAME}
-    - echo "${CI_COMMIT_BRANCH}" | tr / _
     - echo "----------"
     - cd .k8s/hasura
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
     - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - sed -i "s~__CI_COMMIT_SHA__~${CI_COMMIT_SHA}~" deployment.yaml ingress.yaml service.yaml
-    - sed -i "s~__BASE_URL__~${"${CI_COMMIT_BRANCH}" | tr / _}~" deployment.yaml ingress.yaml service.yaml
+    - sed -i "s~__BASEURL__~${CI_COMMIT_REF_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - |
       if kubectl apply -f deployment.yaml | grep -q unchanged; then
           echo "=> Patching deployment to force image update."
