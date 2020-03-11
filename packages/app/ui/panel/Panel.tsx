@@ -11,4 +11,4 @@ const Panel: React.FunctionComponent = () => {
   );
 };
 
-export default Panel;
+export { Panel };
