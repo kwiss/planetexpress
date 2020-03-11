@@ -26,6 +26,8 @@ spec:
           env:
             - name: PGSSLMODE
               value: 'require'
+            - name: HASURA_GRAPHQL_PG_CONNECTIONS
+              value: '6'
             - name: HASURA_GRAPHQL_DATABASE_URL
               value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25061/todo?sslmode=require
             - name: HASURA_GRAPHQL_JWT_SECRET
