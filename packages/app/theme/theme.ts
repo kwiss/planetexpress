@@ -5,7 +5,39 @@ const heading = {
   lineHeight: 'heading',
 };
 
+const baseformStyle = {
+  '&:focus': {
+    bg: 'greyBorder',
+    color: 'black',
+    outline: 'none',
+  },
+  '&:hover': {
+    bg: 'greyBorder',
+  },
+  bg: 'greyHyperLight',
+  border: 0,
+  color: 'greyDark',
+  lineHeight: '22px',
+  px: 4,
+  py: 3,
+  transition: '150ms ease-in-out all',
+};
+
+const gradient = `linear-gradient(180deg, #2E48ED 0%, #2740E1 100%)`;
+
 export const base = {
+  buttons: {
+    primary: {
+      '&:hover': {
+        boxShadow: '0px 4px 10px rgba(15, 41, 208, 0.25)',
+        cursor: 'pointer',
+      },
+      background: gradient,
+      boxShadow: '0px 1px 2px rgba(15, 41, 208, 0.25)',
+      color: 'white',
+      transition: '150ms ease-in-out all',
+    },
+  },
   colors: {
     background: '#fff',
     black: '#171618',
@@ -20,13 +52,13 @@ export const base = {
         background: '#000',
         primary: '#0cf',
         text: '#fff',
-      }
+      },
     },
     muted: '#f6f6f6',
     primary: '#0F29D0',
     secondary:
       'linear-gradient(180deg, rgba(46, 72, 237, 0.2) 0%, rgba(39, 64, 225, 0.2) 100%)',
-    text: '#171618;'
+    text: '#171618',
   },
   fontSizes: [12, 14, 18, 20, 26, 32, 48, 64, 96],
   fontWeights: {
@@ -43,48 +75,24 @@ export const base = {
   },
   forms: {
     input: {
-      '&:focus': {
-        bg: 'greyBorder',
-        color: 'black',
-        outline: 'none'
-      },
-      '&:hover': {
-        bg: 'greyBorder',
-      },
-      'bg': 'greyHyperLight',
-      'border': 0,
-      'color': 'greyDark',
-      'fontSize': 1,
-      'height': '40px',
-      'mb': 4,
-      'px': 4,
-      'py': 3,
-      'transition': '150ms ease-in-out all',
+      ...baseformStyle,
+      mb: 4,
     },
     label: {
       fontSize: 1,
-      fontWeight:'bold',
+      fontWeight: 'bold',
       mb: 3,
     },
     select: {
-      '&:focus': {
-        borderColor: 'primary',
-        boxShadow: (t) => `0 0 0 2px ${t.colors.primary}`,
-        outline: 'none',
-      },
-      'borderColor': 'gray',
-    },
-    slider: {
-      bg: 'muted',
+      ...baseformStyle,
     },
     textarea: {
-      '&:focus': {
-        borderColor: 'primary',
-        boxShadow: (t) => `0 0 0 2px ${t.colors.primary}`,
-        outline: 'none',
-      },
-      'borderColor': 'gray',
+      ...baseformStyle,
+      mb: 4,
     },
+  },
+  radii: {
+    default: '4px',
   },
   space: [0, 4, 8, 10, 12, 16, 32, 64, 128, 256, 512],
   styles: {

@@ -1,0 +1,18 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - id
+      - created_at
+      - username
+      - password
+      - email
+      - active
+      computed_fields: []
+      filter: {}
+      limit: null
+    role: user
+    table:
+      name: user
+      schema: public
+  type: create_select_permission
