@@ -7,10 +7,10 @@ metadata:
     app: planetexpress-app
     ref: __CI_ENVIRONMENT_SLUG__
   annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8000"
-    prometheus.io/scheme: "http"
-    prometheus.io/path: "/metrics"
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: '8000'
+    prometheus.io/scheme: 'http'
+    prometheus.io/path: '/metrics'
 spec:
   type: ClusterIP
   ports:
