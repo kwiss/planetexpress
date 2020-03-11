@@ -29,7 +29,7 @@ deploy_review_app:
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
     - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - sed -i "s~__CI_COMMIT_SHA__~${CI_COMMIT_SHA}~" deployment.yaml ingress.yaml service.yaml
-    - sed -i "s~__BASEURL__~${CI_COMMIT_REF_SLUG}~" deployment.yaml ingress.yaml service.yaml
+    - sed -i "s~__BASE_URL__~${CI_COMMIT_REF_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - |
       if kubectl apply -f deployment.yaml | grep -q unchanged; then
           echo "=> Patching deployment to force image update."
@@ -67,7 +67,7 @@ deploy_review_hasura:
     - sed -i "s~__CI_REGISTRY_IMAGE__~${CI_REGISTRY_IMAGE}~" deployment.yaml
     - sed -i "s~__CI_ENVIRONMENT_SLUG__~${CI_ENVIRONMENT_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - sed -i "s~__CI_COMMIT_SHA__~${CI_COMMIT_SHA}~" deployment.yaml ingress.yaml service.yaml
-    - sed -i "s~__BASEURL__~${CI_COMMIT_REF_SLUG}~" deployment.yaml ingress.yaml service.yaml
+    - sed -i "s~__BASE_URL__~${CI_COMMIT_REF_SLUG}~" deployment.yaml ingress.yaml service.yaml
     - |
       if kubectl apply -f deployment.yaml | grep -q unchanged; then
           echo "=> Patching deployment to force image update."
