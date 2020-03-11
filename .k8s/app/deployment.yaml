@@ -35,6 +35,8 @@ spec:
               value: 'test123456'
             - name: AUTH_KEY_ID
               value: 'test123456'
+            - name: GRAPHQL_SERVER_URI
+              value: 'https://hasura-__BASE_URL__.planetexpress.dev/v1/graphql'
             - name: DATABASE_URL
               value: postgres://doadmin:r58z2qx5xsaxm6mj@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb?sslmode=require
           ports:
