@@ -6,7 +6,7 @@ export const CREATE_TODO = gql`
     $status: String!
     $title: String!
   ) {
-    insert_tasks(
+    insert_task(
       objects: { description: $description, title: $title, status: $status }
     ) {
       returning {

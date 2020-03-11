@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const TODO_LIST = gql`
-  query tasks {
-    todos: tasks {
+  query todos {
+    todos: task {
       description
       id
       status

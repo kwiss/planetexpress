@@ -9,7 +9,7 @@ const CreateTodo: FunctionComponent = () => {
   const handleSubmit = (values, { setSubmitting, setErrors }) => {
     try {
       createTodo({
-        refetchQueries: ['tasks'],
+        refetchQueries: ['todos'],
         variables: {
           description: values.description,
           status: values.status,
