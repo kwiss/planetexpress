@@ -1,3 +1,3 @@
 export interface CreateTodoIdentifier {
-  handleSubmit?: function;
+  handleSubmit?: Function;
 }
