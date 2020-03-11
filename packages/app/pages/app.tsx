@@ -5,6 +5,7 @@ import { Box } from 'theme-ui';
 import { CreateTodo } from '../components/createTodo';
 import { LayoutApp } from '../components/layouts';
 import { TodoList } from '../components/todoList';
+import { ToolBar } from '../components/toolBar';
 import { withAuthSync } from '../hocs/with-auth-sync';
 
 const App: React.FunctionComponent = () => {
@@ -15,6 +16,7 @@ const App: React.FunctionComponent = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box sx={{ maxWidth: '1024px', mx: 'auto' }}>
+        <ToolBar />
         <CreateTodo />
         <TodoList />
       </Box>

@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { FormikProps, useFormik } from 'formik';
 import React, { FunctionComponent } from 'react';
 import { Box, Input, Label, Select, Text, Textarea } from 'theme-ui';
 

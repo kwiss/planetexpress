@@ -7,7 +7,6 @@ import { CREATE_TODO } from './mutations';
 const CreateTodo: FunctionComponent = () => {
   const [createTodo] = useMutation(CREATE_TODO);
   const handleSubmit = (values, { setSubmitting, setErrors }) => {
-    console.log(values);
     try {
       createTodo({
         refetchQueries: ['tasks'],
