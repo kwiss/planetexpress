@@ -36,7 +36,7 @@ spec:
             - name: AUTH_KEY_ID
               value: 'test123456'
             - name: DATABASE_URL
-              value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25061/todo?sslmode=require
+              value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb?sslmode=require
           ports:
             - name: http-metrics
               protocol: TCP

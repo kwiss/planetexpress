@@ -29,7 +29,7 @@ spec:
             - name: HASURA_GRAPHQL_PG_CONNECTIONS
               value: '6'
             - name: HASURA_GRAPHQL_DATABASE_URL
-              value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25061/todo?sslmode=require
+              value: postgres://doadmin:v301lqeez61js1fc@db-postgresql-ams3-61243-do-user-6394442-0.a.db.ondigitalocean.com:25060/defaultdb?sslmode=require
             - name: HASURA_GRAPHQL_JWT_SECRET
               value: '{"type": "RS256","jwk_url": "https://app-__BASE_URL__.planetexpress.dev/api/auth/jwks"}'
             - name: HASURA_GRAPHQL_ACCESS_KEY
