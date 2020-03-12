@@ -17,9 +17,7 @@ const todoItemStyle = {
 const TodoItem: FunctionComponent<TodoItemIdentifier> = props => {
   const {
     edit,
-    todo: {
- description, id, status, title, assignee 
-},
+    todo: { description, id, status, title, assignee },
   } = props;
 
   return (
@@ -32,6 +30,7 @@ const TodoItem: FunctionComponent<TodoItemIdentifier> = props => {
       />
       <Box sx={{ bg: 'greyBorder', height: '16px', mx: '3', width: '1px' }} />
       <Text>{title}</Text>
+      <Box sx={{ bg: 'greyBorder', height: '16px', mx: '3', width: '1px' }} />
       {assignee && <Text>{assignee.username}</Text>}
       <Flex sx={{ ml: 'auto' }}>
         <Text
