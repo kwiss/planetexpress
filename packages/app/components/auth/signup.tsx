@@ -1,8 +1,9 @@
 import { Formik } from 'formik';
+import Router from 'next/router';
 import * as React from 'react';
 import { Box, Input, Label } from 'theme-ui';
 
-import {CyButton} from '../../ui/Button';
+import { CyButton } from '../../ui/Button';
 
 const url = `/api/auth/signup`;
 
@@ -11,9 +12,9 @@ const Signup: React.FunctionComponent = () => {
   return (
     <Formik
       initialValues={{ email: '', password: '', username: '' }}
-      onSubmit={async (values) => {
+      onSubmit={async values => {
         try {
-          await fetch(url, {
+          const response = await fetch(url, {
             body: JSON.stringify({
               email: values.email,
               password: values.password,
@@ -24,7 +25,11 @@ const Signup: React.FunctionComponent = () => {
             },
             method: 'POST',
           });
+          if (response.status) {
+            Router.push('/login');
+          }
         } catch (e) {
+          alert(`for test purpose only ${e}`);
           console.log(e);
         }
       }}
@@ -48,9 +53,7 @@ const Signup: React.FunctionComponent = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <Label htmlFor="password">
-              Your password
-            </Label>
+            <Label htmlFor="password">Your password</Label>
             <Input
               id="password"
               type="password"
@@ -58,9 +61,7 @@ const Signup: React.FunctionComponent = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            <CyButton type="submit">
-              Créer un compte
-            </CyButton>
+            <CyButton type="submit">Créer un compte</CyButton>
           </Box>
         );
       }}

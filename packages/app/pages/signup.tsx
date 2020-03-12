@@ -1,11 +1,12 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import * as React from 'react';
 import { Flex } from 'theme-ui';
 
 import Signup from '../components/auth/signup';
-import {LayoutDefault} from '../components/layouts';
+import { LayoutDefault } from '../components/layouts';
 import { withAuthSync } from '../hocs/with-auth-sync';
-import {AuthBox} from '../ui/AuthBox';
+import { AuthBox } from '../ui/AuthBox';
 
 const SignupPage: React.FunctionComponent = () => {
   return (
@@ -15,13 +16,16 @@ const SignupPage: React.FunctionComponent = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LayoutDefault>
-        <Flex sx={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '100vh'
-        }}>
-          <AuthBox sx={{mx:' auto', width:'450px'}} title='Signup'>
+        <Flex
+          sx={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: '100vh',
+          }}
+        >
+          <AuthBox sx={{ mx: ' auto', width: '450px' }} title="Signup">
             <Signup />
+            <Link href="/login">Sign in</Link>
           </AuthBox>
         </Flex>
       </LayoutDefault>
