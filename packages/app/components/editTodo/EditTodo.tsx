@@ -27,25 +27,25 @@ const EditTodo: FunctionComponent<EditTodoIdentifier> = props => {
     return <Box>{error}</Box>;
   }
 
+  const users = data.users;
   const [task] = data.tasks;
 
   const initialValues = {
+    assigneeId: task.assigneeId,
     description: task.description,
     status: task.status,
     title: task.title,
-    userId: task.userId,
   };
-
   const handleSubmit = (values, { setSubmitting, setErrors }): void => {
     try {
       EditTodo({
         refetchQueries: ['todos'],
         variables: {
+          assigneeId: values.assigneeId,
           description: values.description,
           id: task.id,
           status: values.status,
           title: values.title,
-          userId: values.userid,
         },
       });
       // execute onSubmit function if exist
@@ -58,7 +58,11 @@ const EditTodo: FunctionComponent<EditTodoIdentifier> = props => {
     setSubmitting(false);
   };
   return (
-    <EditTodoForm initialValues={initialValues} handleSubmit={handleSubmit} />
+    <EditTodoForm
+      users={users}
+      initialValues={initialValues}
+      handleSubmit={handleSubmit}
+    />
   );
 };
 

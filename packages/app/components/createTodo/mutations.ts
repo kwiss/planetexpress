@@ -14,7 +14,7 @@ export const CREATE_TODO = gql`
         id
         status
         title
-        user_id
+        assignee_id
       }
     }
   }

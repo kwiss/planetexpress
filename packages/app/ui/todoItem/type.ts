@@ -3,7 +3,7 @@ interface Todo {
   id: number;
   status: string;
   title: string;
-  userId: number;
+  assignee: { id: string; username: string };
 }
 
 export interface TodoItemIdentifier {

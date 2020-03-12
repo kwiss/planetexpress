@@ -7,8 +7,7 @@ import { todoSchema } from './schema';
 import { EditTodoIdentifier } from './type';
 
 const EditTodoForm: FunctionComponent<EditTodoIdentifier> = props => {
-  const { handleSubmit, initialValues } = props;
-
+  const { handleSubmit, initialValues, users } = props;
   const formik = useFormik({
     initialValues,
     onSubmit: handleSubmit,
@@ -32,14 +31,24 @@ const EditTodoForm: FunctionComponent<EditTodoIdentifier> = props => {
         value={formik.values.description}
       />
       <Label htmlFor="status">Assignee</Label>
-      {formik.touched.userId && <Text>{formik.errors.userId}</Text>}
-      <Select mb="4" name="userId" onChange={formik.handleChange} value={1}>
-        <option>Beep</option>
-        <option>Boop</option>
-        <option>Blip</option>
+      {formik.touched.assigneeId && <Text>{formik.errors.assigneeId}</Text>}
+      <Select
+        mb="4"
+        name="assigneeId"
+        onChange={formik.handleChange}
+        value={formik.values.assigneeId ? formik.values.assigneeId : ''}
+      >
+        <option>choose someone</option>
+        {users.map(user => {
+          return (
+            <option value={user.id} key={user.id}>
+              {user.username}
+            </option>
+          );
+        })}
       </Select>
       <Label htmlFor="status">Status</Label>
-      {formik.touched.status && <Text>{formik.errors.userId}</Text>}
+      {formik.touched.status && <Text>{formik.errors.status}</Text>}
       <Select
         mb="4"
         name="status"

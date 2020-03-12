@@ -6,7 +6,7 @@ export const UPDATE_TODO = gql`
     $id: uuid!
     $status: String!
     $title: String!
-    $userId: Int
+    $assigneeId: uuid
   ) {
     update_task(
       where: { id: { _eq: $id } }
@@ -15,7 +15,7 @@ export const UPDATE_TODO = gql`
         id: $id
         status: $status
         title: $title
-        user_id: $userId
+        assignee_id: $assigneeId
       }
     ) {
       returning {
@@ -23,7 +23,7 @@ export const UPDATE_TODO = gql`
         id
         status
         title
-        user_id
+        assignee_id
       }
     }
   }

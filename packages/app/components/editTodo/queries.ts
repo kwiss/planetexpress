@@ -7,7 +7,11 @@ export const SINGLE_TASK = gql`
       id
       status
       title
-      userId: user_id
+      assigneeId: assignee_id
+    }
+    users: user {
+      id
+      username
     }
   }
 `;

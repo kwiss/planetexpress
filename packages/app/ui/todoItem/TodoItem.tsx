@@ -14,27 +14,32 @@ const todoItemStyle = {
   p: '3',
 };
 
-const TodoItem: FunctionComponent<TodoItemIdentifier> = (props) => {
+const TodoItem: FunctionComponent<TodoItemIdentifier> = props => {
   const {
     edit,
-    todo: {
-      description, id, status, title, 
-      userId 
-    },
+    todo: { description, id, status, title, assignee },
   } = props;
+
+  console.log(assignee);
   return (
     <Flex sx={todoItemStyle}>
       <Avatar
         sx={{ height: '16px', width: '16px' }}
-        src={`https://api.adorable.io/avatars/48/${userId}.png`}
+        src={`https://api.adorable.io/avatars/48/${
+          assignee ? assignee.id : 'test'
+        }.png`}
       />
       <Box sx={{ bg: 'greyBorder', height: '16px', mx: '3', width: '1px' }} />
       <Text>{title}</Text>
-      <Flex sx={{ml: 'auto'}}>
-        <Text sx={{cursor: 'pointer', fontSize: 1, mr: 2}} onClick={() => edit(id)}>
-        Editer
+      {assignee && <Text>{assignee.username}</Text>}
+      <Flex sx={{ ml: 'auto' }}>
+        <Text
+          sx={{ cursor: 'pointer', fontSize: 1, mr: 2 }}
+          onClick={() => edit(id)}
+        >
+          Editer
         </Text>
-        <Badge sx={{ lineHeight: '20px'}}>{status}</Badge>
+        <Badge sx={{ lineHeight: '20px' }}>{status}</Badge>
       </Flex>
     </Flex>
   );
