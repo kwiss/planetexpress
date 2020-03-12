@@ -2,7 +2,7 @@ interface InitialValuesIdentifier {
   description: string;
   status: string;
   title: string;
-  assigneeId: number;
+  assigneeId: string;
 }
 
 export interface EditTodoIdentifier {

@@ -38,7 +38,6 @@ const EditTodoForm: FunctionComponent<EditTodoIdentifier> = props => {
         onChange={formik.handleChange}
         value={formik.values.assigneeId ? formik.values.assigneeId : ''}
       >
-        <option>choose someone</option>
         {users.map(user => {
           return (
             <option value={user.id} key={user.id}>

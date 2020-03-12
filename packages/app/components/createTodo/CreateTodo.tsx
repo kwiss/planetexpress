@@ -1,8 +1,10 @@
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import React, { FunctionComponent } from 'react';
+import { Box } from 'theme-ui';
 
 import { CreateTodoForm } from './CreateTodoForm';
 import { CREATE_TODO } from './mutations';
+import { USERS } from './queries';
 
 interface CreateTodoIdentifier {
   onSubmit?: Function;
@@ -11,12 +13,28 @@ interface CreateTodoIdentifier {
 const CreateTodo: FunctionComponent<CreateTodoIdentifier> = props => {
   const { onSubmit } = props;
   const [createTodo] = useMutation(CREATE_TODO);
+  const { data, loading, error } = useQuery(USERS);
 
+  if (loading) {
+    return <Box>Loading</Box>;
+  }
+  if (error) {
+    return <Box>{error}</Box>;
+  }
+
+  const users = data.users;
+  const initialValues = {
+    assigneeId: '',
+    description: '',
+    status: 'todo',
+    title: '',
+  };
   const handleSubmit = (values, { setSubmitting, setErrors }): void => {
     try {
       createTodo({
         refetchQueries: ['todos'],
         variables: {
+          assigneeId: values.assigneeId ? values.assigneeId : null,
           description: values.description,
           status: values.status,
           title: values.title,
@@ -31,7 +49,13 @@ const CreateTodo: FunctionComponent<CreateTodoIdentifier> = props => {
     }
     setSubmitting(false);
   };
-  return <CreateTodoForm handleSubmit={handleSubmit} />;
+  return (
+    <CreateTodoForm
+      users={users}
+      initialValues={initialValues}
+      handleSubmit={handleSubmit}
+    />
+  );
 };
 
 CreateTodo.displayName = 'CreateTodo';

@@ -17,10 +17,11 @@ const todoItemStyle = {
 const TodoItem: FunctionComponent<TodoItemIdentifier> = props => {
   const {
     edit,
-    todo: { description, id, status, title, assignee },
+    todo: {
+ description, id, status, title, assignee 
+},
   } = props;
 
-  console.log(assignee);
   return (
     <Flex sx={todoItemStyle}>
       <Avatar

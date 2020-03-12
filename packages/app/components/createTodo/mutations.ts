@@ -5,9 +5,15 @@ export const CREATE_TODO = gql`
     $description: String!
     $status: String!
     $title: String!
+    $assigneeId: uuid
   ) {
     insert_task(
-      objects: { description: $description, title: $title, status: $status }
+      objects: {
+        description: $description
+        title: $title
+        status: $status
+        assignee_id: $assigneeId
+      }
     ) {
       returning {
         description

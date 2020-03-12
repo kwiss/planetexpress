@@ -6,15 +6,8 @@ import { CyButton } from '../../ui/Button';
 import { todoSchema } from './schema';
 import { CreateTodoIdentifier } from './type';
 
-const initialValues = {
-  assignee: '',
-  description: '',
-  status: 'todo',
-  title: '',
-};
-
 const CreateTodoForm: FunctionComponent<CreateTodoIdentifier> = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, initialValues, users } = props;
 
   const formik = useFormik({
     initialValues,
@@ -38,20 +31,25 @@ const CreateTodoForm: FunctionComponent<CreateTodoIdentifier> = props => {
         onChange={formik.handleChange}
         value={formik.values.description}
       />
-      <Label htmlFor="comment">Comment</Label>
-      {formik.touched.assignee && <Text>{formik.errors.assignee}</Text>}
+      <Label htmlFor="assigneeId">Assignee</Label>
+      {formik.touched.assigneeId && <Text>{formik.errors.assigneeId}</Text>}
       <Select
         mb="4"
-        name="assignee"
+        name="assigneeId"
         onChange={formik.handleChange}
-        value={formik.values.assignee}
+        value={formik.values.assigneeId ? formik.values.assigneeId : ''}
       >
-        <option>Beep</option>
-        <option>Boop</option>
-        <option>Blip</option>
+        <option value={null}>choose someone</option>
+        {users.map(user => {
+          return (
+            <option value={user.id} key={user.id}>
+              {user.username}
+            </option>
+          );
+        })}
       </Select>
-      <Label htmlFor="comment">Status</Label>
-      {formik.touched.status && <Text>{formik.errors.assignee}</Text>}
+      <Label htmlFor="status">Status</Label>
+      {formik.touched.status && <Text>{formik.errors.status}</Text>}
       <Select
         mb="4"
         name="status"
